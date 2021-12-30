@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/current_day.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/portrait.css">
+    <link rel="icon" href="images/deer.png" type="image/png" sizes="72×72" />
+
+    <title>Note My Life</title>
+
+</head>
+<style media="screen">
+
+</style>
+
+<body>
+
+    <div id="current-day-info" class="color">
+        <h1 id="app-name-landscape" class="off-color default-cusor center">Note My Life</h1>
+        <div>
+            <h2 id="cur-year" class="current-day-heading default-cusor center">2019</h2>
+        </div>
+        <div class="">
+            <h1 id="cur-day" class="current-day-heading default-cusor center">Wednesday</h1>
+            <h1 id="cur-month" class="current-day-heading default-cusor center">May</h1>
+            <h1 id="cur-date" class="current-day-heading default-cusor center">14</h1>
+        </div>
+        <div class="">
+            <button id="theme-landscape" class="button font color" onclick="open_fav_color();">Change Theme</button>
+        </div>
+    </div>
+
+    <div id="calendar">
+        <h1 id="app-name-portrait" class="center off-color">My Calendar</h1>
+        <table>
+            <thead class="color">
+                <tr>
+                    <th colspan="7" class="border-color">
+                        <h4 id="cal-year">2019</h4>
+                        <div>
+                            <i class="fas fa-caret-left icon" onclick="previousMonth();"></i>
+                            <h3 id="cal-month">May</h3>
+                            <i class="fas fa-caret-right icon" onclick="nextMonth();"></i>
+                        </div>
+                    </th>
+                </tr>
+
+                <tr>
+                    <th class="weekday border-color">Sun</th>
+                    <th class="weekday border-color">Mon</th>
+                    <th class="weekday border-color">Tue</th>
+                    <th class="weekday border-color">Wed</th>
+                    <th class="weekday border-color">Thu</th>
+                    <th class="weekday border-color">Fri</th>
+                    <th class="weekday border-color">Sat</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-body" class="border-color">
+                <tr>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td class="tooltip" onclick="dayClicked(this);">1 <img src="images/note1.png" alt="記事資料"><span>這是提示！！！</span></td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td id="current-day" onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                </tr>
+
+                <tr>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                    <td onclick="dayClicked(this);">1</td>
+                </tr>
+            </tbody>
+        </table>
+        <button id="theme-portrait" class="button font color" onclick="open_fav_color();">Change Theme</button>
+    </div>
+
+    <dialog id="modal">
+        <div id="fav-color" hidden>
+            <div class="popup">
+                <h4 class="center">What's your favorite color?</h4>
+                <div id="color-options">
+                    <div class="color-option">
+                        <div class="color-preview" id="red" style="background-color: #b27777;" onclick="addCheckMark('red');"></div>
+                        <h5>絳紗</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="orange" style="background-color: #e8b004;" onclick="addCheckMark('orange');"></div>
+                        <h5>谷黃</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="green" style="background-color: #223e36;" onclick="addCheckMark('green');"></div>
+                        <h5>蒼綠</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="blue" style="background-color: #144674;" onclick="addCheckMark('blue');"><i class="fas fa-check checkmark"></i></div>
+                        <h5>鷃藍</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="purple" style="background-color: #681752;" onclick="addCheckMark('purple');"></div>
+                        <h5>牽牛紫</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="black" style="background-color: #685e48;" onclick="addCheckMark('black');"></div>
+                        <h5>燕羽灰</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="cerise" style="background-color: #e3adb9;" onclick="addCheckMark('cerise');"></div>
+                        <h5>海天霞</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="deep-orange" style="background-color: #f9d17b;" onclick="addCheckMark('deep-orange');"></div>
+                        <h5>麥芽糖黃</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="lime" style="background-color: #869d9d;" onclick="addCheckMark('lime');"></div>
+                        <h5>蟹青</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="baby-blue" style="background-color: #66a9c9;" onclick="addCheckMark('baby-blue');"></div>
+                        <h5>澗石藍</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="pink" style="background-color: #8076a3;" onclick="addCheckMark('pink');"></div>
+                        <h5>藤蘿紫</h5>
+                    </div>
+                    <div class="color-option">
+                        <div class="color-preview" id="teal" style="background-color: #7a7374;" onclick="addCheckMark('teal');"></div>
+                        <h5>鋅灰</h5>
+                    </div>
+                </div>
+                <button id="update-theme-button" class="button font" onclick="change_color();">Update</button>
+            </div>
+        </div>
+        <div id="make-note" hidden>
+            <div class="popup">
+                <h4>Add a note to the calendar</h4>
+                <textarea id="edit-post-it" class="font" name="post-it" autofocus></textarea>
+                <div>
+                    <button class="button font post-it-button" id="add-post-it" onclick="submitPostIt();">Post It</button>
+                    <button class="button font post-it-button" id="delete-button" onclick="deleteNote();">Delete It</button>
+                </div>
+            </div>
+    </dialog>
+    <script type="text/javascript" src="js/updateData.js" charset="utf-8"></script>
+    <script language="JavaScript">
+        updateCalendar();
+        //current 目前點擊的日期
+        var currentPostItID = 0; //目前的記事ID
+        var newCurrentPostIt = false; //目前的記事是否為新？也就是：目前點選的日期尚未有任何的記事資料
+        var currentPostItIndex = 0; //目前的記事在postIts陣列中的位置索引
+
+        function openMakeNote() {
+            var modal = document.getElementById("modal");
+            modal.open = true;
+            var template = document.getElementById("make-note");
+            template.removeAttribute("hidden");
+            document.getElementById("edit-post-it").focus(); //游標跳至文字輸入方塊中, 解決autofocus無作用的問題
+        }
+
+        function closeMakeNote() {
+            //關閉對話方塊
+            var modal = document.getElementById("modal");
+            modal.open = false;
+            var template = document.getElementById("make-note");
+            template.setAttribute("hidden", "hidden");
+        }
+
+        function dayClicked(elm) {
+            console.log(elm.dataset.uid)
+            currentPostItID = elm.dataset.uid; //目前的記事ID為所點擊的日期表格上的uid
+            currentDayHasNote(currentPostItID); //判斷目前點蠕擊的日期是否有記事資料
+            if (newCurrentPostIt == false) document.getElementById("edit-post-it").value = postIts[currentPostItIndex].note;
+            openMakeNote();
+        }
+
+
+        function currentDayHasNote(uid) { //測試特定UID是否已經有記事
+            for (var i = 0; i < postIts.length; i++) {
+                if (postIts[i].id == uid) {
+                    newCurrentPostIt = false;
+                    currentPostItIndex = i;
+                    return;
+                }
+            }
+            newCurrentPostIt = true;
+        }
+
+        function getRandom(min, max) { //傳回介於min與max間的亂數值
+            return Math.floor(Math.random() * (max - min)) + min;
+        }
+
+        function submitPostIt() { //按了PostIt按鍵後，所要執行的方法
+            const value = document.getElementById("edit-post-it").value;
+            if (value == "") { //如果輸入是空白的話…
+                closeMakeNote();
+                return;
+            }
+            document.getElementById("edit-post-it").value = "";
+            let num = getRandom(1, 6); //取得1~5的亂數，用來標示便利貼顏色的檔案代號,   min <= num < max
+            let postIt = {
+                id: currentPostItID,
+                note_num: num,
+                note: value
+            }
+            if (newCurrentPostIt) { //如果是新記事的話
+                postIts.push(postIt); //將新記事postIT物件推入postIts陣列
+            } else {
+                postIts[currentPostItIndex].note = postIt.note; //更新現有記事物件的記事資料
+            }
+            console.log(postIts)
+                // console.log(document.getElementsByTagName('tbody')[0].innerHTML);
+            fillInMonth(thisYear, thisMonth);
+            closeMakeNote();
+        }
+
+        function deleteNote() {
+            document.getElementById("edit-post-it").value = "";
+            let indexToDel;
+            if (!newCurrentPostIt) { //不是新記事資料的話, currentPostItIndex指向目前td的記事資料(postIts記事物件陣列中)，也就是目前要刪除的記事資料
+                indexToDel = currentPostItIndex; //indexToDel指向將要刪除的資料
+            }
+            if (indexToDel != undefined) { //indexToDel有值的話…
+                postIts.splice(indexToDel, 1); //從indexToDel開始，數量1，刪除postIts中的元素
+                console.log(postIts)
+            }
+            fillInMonth(thisYear, thisMonth);
+            closeMakeNote();
+        }
+    </script>
+</body>
+
+</html>
