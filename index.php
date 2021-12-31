@@ -218,7 +218,7 @@
     <script type="text/javascript" src="js/updateData.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
     <script language = "JavaScript">
-        currentColor.name = <?php echo(json_encode(getTheme())); ?>//js_encode將回傳的資料包裝成JSON字串，指定給currentColor.name
+        currentColor.name = <?php echo(json_encode(db_updateTheme())); ?>//js_encode將回傳的資料包裝成JSON字串，指定給currentColor.name
     </script>
 </body>
 
