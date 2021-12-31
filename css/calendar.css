@@ -106,12 +106,10 @@
 
 #calendar tbody tr td[class*="color"]:first-child {
     border-left-color: inherit;
-    /* background-color: pink; */
 }
 
 #calendar tbody tr td[class*="color"]:last-child {
     border-right-color: inherit;
-    /* background-color: orange; */
 }
 
 #calendar tbody tr:last-child td[class*="color"] {
@@ -123,5 +121,5 @@
 }
 
 #calendar tbody .prev-month-last-day:not(:last-child) {
-    border-right: 1px solid black !important;
+    border-right: 1px solid #9c9c9c !important;
 }

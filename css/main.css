@@ -53,21 +53,21 @@ sup {
 
 .color {
     color: #FEFDFD;
-    background-color: #1B19CD;
+    background-color: #144674;
 }
 
 .border-color {
-    border-color: #1B19CD;
+    border-color: #144674;
 }
 
 .off-color {
-    color: #7c7EFB;
+    color: #48739b;
 }
 
 table,
 td,
 th {
-    border: 1px solid #232323;
+    border: 1px solid #9c9c9c;
 }
 
 table {
@@ -77,5 +77,5 @@ table {
 }
 
 .border-color {
-    border-color: #1B19CD;
+    border-color: #144674;
 }

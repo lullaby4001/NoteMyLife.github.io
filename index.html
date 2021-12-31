@@ -131,7 +131,6 @@
         </table>
         <button id="theme-portrait" class="button font color" onclick="open_fav_color();">Change Theme</button>
     </div>
-
     <dialog id="modal">
         <div id="fav-color" hidden>
             <div class="popup">
@@ -213,6 +212,10 @@
             var template = document.getElementById("make-note");
             template.removeAttribute("hidden");
             document.getElementById("edit-post-it").focus(); //游標跳至文字輸入方塊中, 解決autofocus無作用的問題
+
+            if (!newCurrentPostIt) {
+                document.getElementById("edit-post-it").value = postIts[currentPostItIndex].note;
+            }
         }
 
         function closeMakeNote() {

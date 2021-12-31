@@ -96,6 +96,7 @@ function updateCalendar() {
     // fillInMonth(2018, 3);
 }
 
+//記事圖示與ToolTip處理
 function appendSpriteToCellAndTooltip(uid, elem) {
     for (let i = 0; i < postIts.length; i++) {
         if (uid == postIts[i].id) {
