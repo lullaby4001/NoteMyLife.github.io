@@ -26,7 +26,7 @@
 
 <body>
 <?php
-      $connection = mysqli_connect("localhost", "user", "password", "databaseName"); //You need to create a database and authorized user first using phpMyAdmin utility.
+      $connection = mysqli_connect("localhost", "yen", "yen88599pp", "notemylife"); //You need to create a database and authorized user first using phpMyAdmin utility.
       if(!$connection){
           die("There was an error connecting to the database.");
       }
