@@ -25,23 +25,35 @@
 </style>
 
 <body>
-    <?php
-        $connection = mysqli_connect("localhost", "yen", "yen88599pp", "notemylife"); //連線資料庫
-        if(!$connection){ //如果連線失敗
-            die("There was an error connecting to the database."); //網頁宣告到此die，並在網頁輸出…
-        }
-        function db_updateTheme($newTheme){
-            global $connection;
-            $query = "UPDATE theme SET cur_theme = '$newTheme' WHERE id = 1"; //更新theme資料表格中，id欄位值為1的資料列中的cur_theme欄位值為$newTheme
-            $result = mysqli_query($connection, $query); //送出SQL查詢
-            if(!$result){ //查詢失敗的話…
-                die("Query failed: " . mysqli_error($connection));
+<?php
+      $connection = mysqli_connect("localhost", "user", "password", "databaseName"); //You need to create a database and authorized user first using phpMyAdmin utility.
+      if(!$connection){
+          die("There was an error connecting to the database.");
+      }
+      function setTheme(){
+          global $connection;
+          $query = "SELECT * FROM theme";
+          $result = mysqli_query($connection, $query);
+          if(!$result){
+              die("Something went wrong.. derp");
+          }
+
+          while($row = mysqli_fetch_assoc($result)){
+              return $row['cur_theme'];
+          }
+      }
+      function db_updateTheme($newTheme){
+          global $connection;
+          $query = "UPDATE theme SET cur_theme = '$newTheme' WHERE id = 1";
+          $result = mysqli_query($connection, $query);
+          if(!$result){
+              die("Query failed: " . mysqli_error($connection));
             }
-            }
-        if(isset($_POST['color'])){ //透過關聯陣列$_POST['color']取得傳送過來的color資料
-        db_updateTheme($_POST['color']); //呼叫db_updateTheme方法
-        }
-    ?>
+          }
+      if(isset($_POST['color'])){
+        db_updateTheme($_POST['color']);
+      }
+  ?>
 
     <div id="current-day-info" class="color">
         <h1 id="app-name-landscape" class="off-color default-cusor center">Note My Life</h1>
@@ -217,8 +229,15 @@
     </dialog>
     <script type="text/javascript" src="js/updateData.js" charset="utf-8"></script>
     <script type="text/javascript" src="js/main.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/ajax.js"></script>
+    
     <script language = "JavaScript">
-        currentColor.name = <?php echo(json_encode(db_updateTheme())); ?>//js_encode將回傳的資料包裝成JSON字串，指定給currentColor.name
+    currentColor.name = <?php echo(json_encode(setTheme())); ?> ; //js_encode將回傳的資料包裝成JSON編碼字串，指定給currentColor.name
+    var today = new Date();
+    var thisMonth = today.getMonth(); console.log(thisMonth);
+    var thisYear = today.getFullYear(); console.log(thisYear);
+    updateDate();
+    fillInMonth();
     </script>
 </body>
 
