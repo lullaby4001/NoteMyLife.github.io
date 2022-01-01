@@ -290,9 +290,9 @@
         function getNotes(){
             const dbref = ref(db);
 
-            console.log(dbref);
+            // console.log(dbref);
             
-            get(child(dbref, "TheNotes/" + currentPostItID))
+            get(ref(dbref, "TheNotes/" + currentPostItID))
             .then((snapshot)=>{
                 if(snapshot.exists()){
                     postIt.currentPostItID = snapshot.val().id;
