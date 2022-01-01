@@ -47,4 +47,3 @@ function currentDayHasNote(uid) { //測試特定UID是否已經有記事
 function getRandom(min, max) { //傳回介於min與max間的亂數值
     return Math.floor(Math.random() * (max - min)) + min;
 }
-
