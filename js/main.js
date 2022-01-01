@@ -27,7 +27,7 @@ function closeMakeNote() {
 function dayClicked(elm) {
     console.log(elm.dataset.uid)
     currentPostItID = elm.dataset.uid; //目前的記事ID為所點擊的日期表格上的uid
-    currentDayHasNote(currentPostItID); //判斷目前點蠕擊的日期是否有記事資料
+    currentDayHasNote(currentPostItID); //判斷目前點擊的日期是否有記事資料
     if (newCurrentPostIt == false) document.getElementById("edit-post-it").value = postIts[currentPostItIndex].note;
     openMakeNote();
 }
