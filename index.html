@@ -340,7 +340,7 @@
         function getNotes(){
             // const dbref = ref(db);
 
-            // console.log(dbref);
+            console.log(db);
             
             get(ref(db, "TheNotes/" + postIts[i].uid))
             .then((snapshot)=>{
