@@ -342,14 +342,14 @@
 
             console.log(db);
             
-            get(ref(db, "TheNotes/" + postIts[i].id))
+            get(ref(db, "TheNotes/" + currentPostItID))
             .then((snapshot)=>{
                 if(snapshot.exists()){
-                    postIts[i].id = snapshot.val().id;
+                    postIts.currentPostItID = snapshot.val().id;
                     console.log(snapshot.val().id);
-                    postIts[i].num = snapshot.val().note_num;
+                    postIts.num = snapshot.val().note_num;
                     console.log(snapshot.val().note_num);
-                    postIts[i].value = snapshot.val().note;
+                    postIts.value = snapshot.val().note;
                     console.log(snapshot.val().note);
                 }
                 else{
