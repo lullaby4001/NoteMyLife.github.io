@@ -290,6 +290,8 @@
         function getNotes(){
             const dbref = ref(db);
 
+            console.log(dbref);
+            
             get(child(dbref, "TheNotes/" + currentPostItID))
             .then((snapshot)=>{
                 if(snapshot.exists()){
