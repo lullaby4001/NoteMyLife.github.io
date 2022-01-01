@@ -193,8 +193,8 @@
                 <h4>Add a note to the calendar</h4>
                 <textarea id="edit-post-it" class="font" name="post-it" autofocus></textarea>
                 <div>
-                    <button class="button font post-it-button" id="add-post-it" onclick="submitPostIt();">Post It</button>
-                    <button class="button font post-it-button" id="delete-button" onclick="deleteNote();">Delete It</button>
+                    <button class="button font post-it-button" id="add-post-it">Post It</button>
+                    <button class="button font post-it-button" id="delete-button">Delete It</button>
                 </div>
             </div>
     </dialog>
@@ -226,7 +226,25 @@
 
         const db = getDatabase(app);
 
-        var notes = document.getElementById('edit-post-it');
+        function getNotes(){
+            db.ref("TheNotes/").on('currentPostItID', function(snapshot){
+                var data = snapshot.val();
+                if(data){
+                    const value = document.getElementById("edit-post-it").value;
+                    let num = getRandom(1, 6); //取得1~5的亂數，用來標示便利貼顏色的檔案代號, min <= num < max
+                    let postIt = {
+                        id: currentPostItID,
+                        note_num: num,
+                        note: value
+                    }
+                    console.log(data);
+                    postIt = data;
+                    currentDayHasNote(uid);
+                }
+            });
+        }
+
+        // var notes = document.getElementById('edit-post-it');
 
         var postBtn = document.getElementById("add-post-it");
         var delBtn = document.getElementById("delete-button");
