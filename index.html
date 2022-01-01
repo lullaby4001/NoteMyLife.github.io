@@ -294,7 +294,9 @@
             .then((snapshot)=>{
                 if(snapshot.exists()){
                     postIt.currentPostItID = snapshot.val().id;
+                    console.log(snapshot.val().id);
                     postIt.num = snapshot.val().note_num;
+                    console.log(snapshot.val().note_num);
                     postIt.value = snapshot.val().note;
                     console.log(snapshot.val().note);
                 }
