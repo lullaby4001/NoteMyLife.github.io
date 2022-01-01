@@ -296,6 +296,7 @@
                     postIt.currentPostItID = snapshot.val().id;
                     postIt.num = snapshot.val().note_num;
                     postIt.value = snapshot.val().note;
+                    console.log(snapshot.val().note);
                 }
                 else{
                     alert('No Data Found');
